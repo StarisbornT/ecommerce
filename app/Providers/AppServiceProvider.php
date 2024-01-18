@@ -25,14 +25,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
 
-        $generalSetting = GeneralSetting::first();
 
-        // Set Time zone
-        Config::set('app.timezone', $generalSetting->time_zone);
-
-        // Share variable at all views
-        View::composer('*', function($view) use ($generalSetting){
-            $view->with('setting', $generalSetting);
-        });
     }
 }
